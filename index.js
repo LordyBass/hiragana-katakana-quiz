@@ -19,7 +19,7 @@ $("#next").click(function(){
 
     if (errorNotice === false && errorNotice2 === false) {
         alert("Must Choose Either Hiragana or Katakana");
-        $("#img").attr("src", "./img/blank.jpg");
+        $("#img").attr("src", "./Img/blank.jpg");
         $("#next").text("Start");
         return;
     }
@@ -29,8 +29,8 @@ $("#next").click(function(){
 
     // Generate Question
     randomNumber = Math.floor(Math.random() * listQuiz.length);
-    $("#img").attr("src", "./img/blank.jpg").css({ opacity: 0 }).animate({ opacity: 1 }, 1000);
-    $("#img").attr("src", "./img/quizImg/" + listQuiz[randomNumber] + ".jpg").css({ opacity: 0 }).animate({ opacity: 1 }, 2000);
+    $("#img").attr("src", "./Img/blank.jpg").css({ opacity: 0 }).animate({ opacity: 1 }, 1000);
+    $("#img").attr("src", "./Img/quizImg/" + listQuiz[randomNumber] + ".jpg").css({ opacity: 0 }).animate({ opacity: 1 }, 2000);
 
     // Generate Multiple Choice
     let correctAnswer = listQuiz[randomNumber].slice(0, -2);
