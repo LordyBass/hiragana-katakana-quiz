@@ -1,0 +1,926 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="./Img/icon.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Hiragana/Katakana Quiz</title>
+</head>
+<body>
+    <style>
+        body{
+            background-size: 100%;
+            background-image: url(./Img/background.jpg);
+        }
+    </style>
+    <header id="header" class="bg-gray-300 text-center text-3xl py-4 font-bold mb-12">
+        Hiragana/Katakana Quiz
+    </header>
+    <section class="flex justify-evenly">
+        <div class="border p-6 bg-gray-300 bg-opacity-30">
+
+            <table>
+                <tr>
+                    <td class="font-bold">
+                        <input type="checkbox" id="hiragana">
+                        <label for="hiragana">
+                            Hiragana<br> <p></p>
+                        </label>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="text-xs">
+                        ------------------
+                    </td>
+                </tr>
+                <tr>
+                    <td class="font-bold">
+                        <label>
+                            Filter By Group :
+                        </label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="checkbox" id="hiragana2" class="checkbox">
+                        <label for="hiragana2">
+                            Monographs Diacritics
+                        </label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="checkbox" id="hiragana3" class="checkbox">
+                        <label for="hiragana3">
+                            Diagraphs
+                        </label>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="text-xs">
+                        ------------------
+                    </td>
+                </tr>
+                <tr>
+                    <td class="font-bold">
+                        <label">
+                            Filter By Key Group :
+                        </label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="checkbox" id="hiragana4" class="checkbox">
+                        <label for="hiragana4">
+                            a, i, u, e, o, vu
+                        </label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="checkbox" id="hiragana5" class="checkbox">
+                        <label for="hiragana5">
+                            ka,ki,ku,ke,ko
+                        </label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="checkbox" id="hiragana6" class="checkbox">
+                        <label for="hiragana6">
+                            sa,shi,su,se,so
+                        </label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="checkbox" id="hiragana7" class="checkbox">
+                        <label for="hiragana7">
+                            ta,chi,tsu,te,to
+                        </label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="checkbox" id="hiragana8" class="checkbox">
+                        <label for="hiragana8">
+                            na,ni,nu,ne,no,n
+                        </label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="checkbox" id="hiragana9" class="checkbox">
+                        <label for="hiragana9">
+                            ha,hi,fu,he,ho
+                        </label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="checkbox" id="hiragana10" class="checkbox">
+                        <label for="hiragana10">
+                            ma,mi,mu,me,mo
+                        </label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="checkbox" id="hiragana11" class="checkbox">
+                        <label for="hiragana11">
+                            ya, yu, yo
+                        </label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="checkbox" id="hiragana12" class="checkbox">
+                        <label for="hiragana12">
+                            ra,ri,ru,re,ro
+                        </label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="checkbox" id="hiragana13" class="checkbox">
+                        <label for="hiragana13">
+                            wa, wo
+                        </label>
+                    </td>
+                </tr>
+            </table>
+            <div class="mt-6">
+                <a class="hover:text-red-900" href="#hiragana-reference">
+                    Check Hiragana Reference Here !!
+                </a>
+            </div>
+        </div>
+        
+        <div class="grid justify-items-center">
+            <div class="max-w-full">
+                <img src="./Img/blank.jpg" id="img" class="border-2 border-gray-500 rounded-full w-48 p-1">
+            </div>
+            <div class="my-6">
+                <input type="text" id="answer" placeholder="Type Your Answer" class="border-2 border-gray-500 px-2 py-2 text-center text-2xl">
+            </div>
+            <div>
+                <button id="validate" class="ease-in-out hover:scale-105 transition duration-300 bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow mx-5">
+                    Validate Answer
+                </button>
+                <button id="next" class="ease-in-out hover:scale-105 transition duration-300 bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded-full shadow">
+                    Start
+                </button>
+            </div>
+            <div class="mt-6">
+                <h1 id="text" class="bg-gray-300 p-3 rounded-md">
+                    Welcome To Hiragana/Katakana Quiz, <span class="text-red-800 font-bold">Press Start To Play</span>
+                </h1>
+            </div>
+        </div>
+
+        <div class="border p-6 bg-gray-300 bg-opacity-30">
+            <table>
+                <tr>
+                    <td class="font-bold">
+                        <input type="checkbox" id="katakana">
+                        <label for="katakana">
+                            Katakana<br> <p></p>
+                        </label>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="text-xs">
+                        ------------------
+                    </td>
+                </tr>
+                <tr>
+                    <td class="font-bold">
+                        <label>
+                            Filter By Group :
+                        </label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="checkbox" id="katakana2" class="checkbox">
+                        <label for="katakana2">
+                            Monographs Diacritics
+                        </label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="checkbox" id="katakana3" class="checkbox">
+                        <label for="katakana3">
+                            Diagraphs
+                        </label>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="text-xs">
+                        ------------------
+                    </td>
+                </tr>
+                <tr>
+                    <td class="font-bold">
+                        <label">
+                            Filter By Key Group :
+                        </label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="checkbox" id="katakana4" class="checkbox">
+                        <label for="katakana4">
+                            a, i, u, e, o, vu
+                        </label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="checkbox" id="katakana5" class="checkbox">
+                        <label for="katakana5">
+                            ka,ki,ku,ke,ko
+                        </label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="checkbox" id="katakana6" class="checkbox">
+                        <label for="katakana6">
+                            sa,shi,su,se,so
+                        </label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="checkbox" id="katakana7" class="checkbox">
+                        <label for="katakana7">
+                            ta,chi,tsu,te,to
+                        </label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="checkbox" id="katakana8" class="checkbox">
+                        <label for="katakana8">
+                            na,ni,nu,ne,no,n
+                        </label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="checkbox" id="katakana9" class="checkbox">
+                        <label for="katakana9">
+                            ha,hi,fu,he,ho
+                        </label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="checkbox" id="katakana10" class="checkbox">
+                        <label for="katakana10">
+                            ma,mi,mu,me,mo
+                        </label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="checkbox" id="katakana11" class="checkbox">
+                        <label for="katakana11">
+                            ya, yu, yo
+                        </label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="checkbox" id="katakana12" class="checkbox">
+                        <label for="katakana12">
+                            ra,ri,ru,re,ro
+                        </label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="checkbox" id="katakana13" class="checkbox">
+                        <label for="katakana13">
+                            wa, wo
+                        </label>
+                    </td>
+                </tr>
+            </table>
+            <div class="mt-4">
+                <a class="hover:text-red-900" href="#katakana-reference">
+                    Check Katakana Reference Here !!
+                </a>
+        </div>
+    </section>
+    <section>
+        <div class="my-24 mt-48 border-t-2 border-gray-500 pt-12">
+            <table class="mx-auto">
+                <tr>
+                    <td id="hiragana-reference" class="font-bold text-4xl text-center">
+                        Hiragana Reference <br> <span class="text-xs hover:text-red-900"><a href="#header">Click here to go back to the Quiz</a></span>
+                    </td>
+                </tr>
+                <tr class="mt-10 flex justify-start">
+                    <td>
+                        <img src="./Img/reference/hiragana/a-h.png" alt="hiragana" class="ease-in-out hover:scale-125 transition duration-300 w-20 border-2 rounded-md mx-6">
+                    </td>
+                    <td>
+                        <img src="./Img/reference/hiragana/i-h.png" alt="hiragana" class="ease-in-out hover:scale-125 transition duration-300 w-20 border-2 rounded-md mx-6">
+                    </td>
+                    <td>
+                        <img src="./Img/reference/hiragana/u-h.png" alt="hiragana" class="ease-in-out hover:scale-125 transition duration-300 w-20 border-2 rounded-md mx-6">
+                    </td>
+                    <td>
+                        <img src="./Img/reference/hiragana/e-h.png" alt="hiragana" class="ease-in-out hover:scale-125 transition duration-300 w-20 border-2 rounded-md mx-6">
+                    </td>
+                    <td>
+                        <img src="./Img/reference/hiragana/o-h.png" alt="hiragana" class="ease-in-out hover:scale-125 transition duration-300 w-20 border-2 rounded-md mx-6">
+                    </td>
+                    <td>
+                        <img src="./Img/reference/hiragana/vu-h.png" alt="hiragana" class="ease-in-out hover:scale-125 transition duration-300 w-20 border-2 rounded-md mx-6">
+                    </td>
+                </tr>
+                <tr class="mt-2 flex justify-center">
+                    <td>
+                        <img src="./Img/reference/hiragana/ka-h.png" alt="hiragana" class="ease-in-out hover:scale-125 transition duration-300 w-20 border-2 rounded-md mx-6">
+                    </td>
+                    <td>
+                        <img src="./Img/reference/hiragana/ki-h.png" alt="hiragana" class="ease-in-out hover:scale-125 transition duration-300 w-20 border-2 rounded-md mx-6">
+                    </td>
+                    <td>
+                        <img src="./Img/reference/hiragana/ku-h.png" alt="hiragana" class="ease-in-out hover:scale-125 transition duration-300 w-20 border-2 rounded-md mx-6">
+                    </td>
+                    <td>
+                        <img src="./Img/reference/hiragana/ke-h.png" alt="hiragana" class="ease-in-out hover:scale-125 transition duration-300 w-20 border-2 rounded-md mx-6">
+                    </td>
+                    <td>
+                        <img src="./Img/reference/hiragana/ko-h.png" alt="hiragana" class="ease-in-out hover:scale-125 transition duration-300 w-20 border-2 rounded-md mx-6">
+                    </td>
+                </tr>
+                <tr class="mt-2 flex justify-center">
+                    <td>
+                        <img src="./Img/reference/hiragana/sa-h.png" alt="hiragana" class="ease-in-out hover:scale-125 transition duration-300 w-20 border-2 rounded-md mx-6">
+                    </td>
+                    <td>
+                        <img src="./Img/reference/hiragana/shi-h.png" alt="hiragana" class="ease-in-out hover:scale-125 transition duration-300 w-20 border-2 rounded-md mx-6">
+                    </td>
+                    <td>
+                        <img src="./Img/reference/hiragana/su-h.png" alt="hiragana" class="ease-in-out hover:scale-125 transition duration-300 w-20 border-2 rounded-md mx-6">
+                    </td>
+                    <td>
+                        <img src="./Img/reference/hiragana/se-h.png" alt="hiragana" class="ease-in-out hover:scale-125 transition duration-300 w-20 border-2 rounded-md mx-6">
+                    </td>
+                    <td>
+                        <img src="./Img/reference/hiragana/so-h.png" alt="hiragana" class="ease-in-out hover:scale-125 transition duration-300 w-20 border-2 rounded-md mx-6">
+                    </td>
+                </tr>
+                <tr class="mt-2 flex justify-center">
+                    <td>
+                        <img src="./Img/reference/hiragana/ta-h.png" alt="hiragana" class="ease-in-out hover:scale-125 transition duration-300 w-20 border-2 rounded-md mx-6">
+                    </td>
+                    <td>
+                        <img src="./Img/reference/hiragana/chi-h.png" alt="hiragana" class="ease-in-out hover:scale-125 transition duration-300 w-20 border-2 rounded-md mx-6">
+                    </td>
+                    <td>
+                        <img src="./Img/reference/hiragana/tsu-h.png" alt="hiragana" class="ease-in-out hover:scale-125 transition duration-300 w-20 border-2 rounded-md mx-6">
+                    </td>
+                    <td>
+                        <img src="./Img/reference/hiragana/te-h.png" alt="hiragana" class="ease-in-out hover:scale-125 transition duration-300 w-20 border-2 rounded-md mx-6">
+                    </td>
+                    <td>
+                        <img src="./Img/reference/hiragana/to-h.png" alt="hiragana" class="ease-in-out hover:scale-125 transition duration-300 w-20 border-2 rounded-md mx-6">
+                    </td>
+                </tr>
+                <tr class="mt-2 flex justify-center">
+                    <td>
+                        <img src="./Img/reference/hiragana/na-h.png" alt="hiragana" class="ease-in-out hover:scale-125 transition duration-300 w-20 border-2 rounded-md mx-6">
+                    </td>
+                    <td>
+                        <img src="./Img/reference/hiragana/ni-h.png" alt="hiragana" class="ease-in-out hover:scale-125 transition duration-300 w-20 border-2 rounded-md mx-6">
+                    </td>
+                    <td>
+                        <img src="./Img/reference/hiragana/nu-h.png" alt="hiragana" class="ease-in-out hover:scale-125 transition duration-300 w-20 border-2 rounded-md mx-6">
+                    </td>
+                    <td>
+                        <img src="./Img/reference/hiragana/ne-h.png" alt="hiragana" class="ease-in-out hover:scale-125 transition duration-300 w-20 border-2 rounded-md mx-6">
+                    </td>
+                    <td>
+                        <img src="./Img/reference/hiragana/no-h.png" alt="hiragana" class="ease-in-out hover:scale-125 transition duration-300 w-20 border-2 rounded-md mx-6">
+                    </td>
+                    <td>
+                        <img src="./Img/reference/hiragana/n-h.png" alt="hiragana" class="ease-in-out hover:scale-125 transition duration-300 w-20 border-2 rounded-md mx-6">
+                    </td>
+                </tr>
+                <tr class="mt-2 flex justify-center">
+                    <td>
+                        <img src="./Img/reference/hiragana/ha-h.png" alt="hiragana" class="ease-in-out hover:scale-125 transition duration-300 w-20 border-2 rounded-md mx-6">
+                    </td>
+                    <td>
+                        <img src="./Img/reference/hiragana/hi-h.png" alt="hiragana" class="ease-in-out hover:scale-125 transition duration-300 w-20 border-2 rounded-md mx-6">
+                    </td>
+                    <td>
+                        <img src="./Img/reference/hiragana/fu-h.png" alt="hiragana" class="ease-in-out hover:scale-125 transition duration-300 w-20 border-2 rounded-md mx-6">
+                    </td>
+                    <td>
+                        <img src="./Img/reference/hiragana/he-h.png" alt="hiragana" class="ease-in-out hover:scale-125 transition duration-300 w-20 border-2 rounded-md mx-6">
+                    </td>
+                    <td>
+                        <img src="./Img/reference/hiragana/ho-h.png" alt="hiragana" class="ease-in-out hover:scale-125 transition duration-300 w-20 border-2 rounded-md mx-6">
+                    </td>
+                </tr>
+                <tr class="mt-2 flex justify-center">
+                    <td>
+                        <img src="./Img/reference/hiragana/ma-h.png" alt="hiragana" class="ease-in-out hover:scale-125 transition duration-300 w-20 border-2 rounded-md mx-6">
+                    </td>
+                    <td>
+                        <img src="./Img/reference/hiragana/mi-h.png" alt="hiragana" class="ease-in-out hover:scale-125 transition duration-300 w-20 border-2 rounded-md mx-6">
+                    </td>
+                    <td>
+                        <img src="./Img/reference/hiragana/mu-h.png" alt="hiragana" class="ease-in-out hover:scale-125 transition duration-300 w-20 border-2 rounded-md mx-6">
+                    </td>
+                    <td>
+                        <img src="./Img/reference/hiragana/me-h.png" alt="hiragana" class="ease-in-out hover:scale-125 transition duration-300 w-20 border-2 rounded-md mx-6">
+                    </td>
+                    <td>
+                        <img src="./Img/reference/hiragana/mo-h.png" alt="hiragana" class="ease-in-out hover:scale-125 transition duration-300 w-20 border-2 rounded-md mx-6">
+                    </td>
+                </tr>
+                <tr class="mt-2 flex justify-center">
+                    <td>
+                        <img src="./Img/reference/hiragana/ya-h.png" alt="hiragana" class="ease-in-out hover:scale-125 transition duration-300 w-20 border-2 rounded-md mx-6">
+                    </td>
+                    <td>
+                        <img src="./Img/reference/hiragana/yu-h.png" alt="hiragana" class="ease-in-out hover:scale-125 transition duration-300 w-20 border-2 rounded-md mx-6">
+                    </td>
+                    <td>
+                        <img src="./Img/reference/hiragana/yo-h.png" alt="hiragana" class="ease-in-out hover:scale-125 transition duration-300 w-20 border-2 rounded-md mx-6">
+                    </td>
+                </tr>
+                <tr class="mt-2 flex justify-center">
+                    <td>
+                        <img src="./Img/reference/hiragana/ra-h.png" alt="hiragana" class="ease-in-out hover:scale-125 transition duration-300 w-20 border-2 rounded-md mx-6">
+                    </td>
+                    <td>
+                        <img src="./Img/reference/hiragana/ri-h.png" alt="hiragana" class="ease-in-out hover:scale-125 transition duration-300 w-20 border-2 rounded-md mx-6">
+                    </td>
+                    <td>
+                        <img src="./Img/reference/hiragana/ru-h.png" alt="hiragana" class="ease-in-out hover:scale-125 transition duration-300 w-20 border-2 rounded-md mx-6">
+                    </td>
+                    <td>
+                        <img src="./Img/reference/hiragana/re-h.png" alt="hiragana" class="ease-in-out hover:scale-125 transition duration-300 w-20 border-2 rounded-md mx-6">
+                    </td>
+                    <td>
+                        <img src="./Img/reference/hiragana/ro-h.png" alt="hiragana" class="ease-in-out hover:scale-125 transition duration-300 w-20 border-2 rounded-md mx-6">
+                    </td>
+                </tr>
+                <tr class="mt-2 flex justify-center">
+                    <td>
+                        <img src="./Img/reference/hiragana/wa-h.png" alt="hiragana" class="ease-in-out hover:scale-125 transition duration-300 w-20 border-2 rounded-md mx-6">
+                    </td>
+                    <td>
+                        <img src="./Img/reference/hiragana/wo-h.png" alt="hiragana" class="ease-in-out hover:scale-125 transition duration-300 w-20 border-2 rounded-md mx-6">
+                    </td>
+                </tr>
+                <tr class="mt-2 flex justify-center">
+                    <td>
+                        <img src="./Img/reference/hiragana/ga-h.png" alt="hiragana" class="ease-in-out hover:scale-125 transition duration-300 w-20 border-2 rounded-md mx-6">
+                    </td>
+                    <td>
+                        <img src="./Img/reference/hiragana/gi-h.png" alt="hiragana" class="ease-in-out hover:scale-125 transition duration-300 w-20 border-2 rounded-md mx-6">
+                    </td>
+                    <td>
+                        <img src="./Img/reference/hiragana/gu-h.png" alt="hiragana" class="ease-in-out hover:scale-125 transition duration-300 w-20 border-2 rounded-md mx-6">
+                    </td>
+                    <td>
+                        <img src="./Img/reference/hiragana/ge-h.png" alt="hiragana" class="ease-in-out hover:scale-125 transition duration-300 w-20 border-2 rounded-md mx-6">
+                    </td>
+                    <td>
+                        <img src="./Img/reference/hiragana/go-h.png" alt="hiragana" class="ease-in-out hover:scale-125 transition duration-300 w-20 border-2 rounded-md mx-6">
+                    </td>
+                </tr>
+                <tr class="mt-2 flex justify-center">
+                    <td>
+                        <img src="./Img/reference/hiragana/za-h.png" alt="hiragana" class="ease-in-out hover:scale-125 transition duration-300 w-20 border-2 rounded-md mx-6">
+                    </td>
+                    <td>
+                        <img src="./Img/reference/hiragana/ji-h.png" alt="hiragana" class="ease-in-out hover:scale-125 transition duration-300 w-20 border-2 rounded-md mx-6">
+                    </td>
+                    <td>
+                        <img src="./Img/reference/hiragana/zu-h.png" alt="hiragana" class="ease-in-out hover:scale-125 transition duration-300 w-20 border-2 rounded-md mx-6">
+                    </td>
+                    <td>
+                        <img src="./Img/reference/hiragana/ze-h.png" alt="hiragana" class="ease-in-out hover:scale-125 transition duration-300 w-20 border-2 rounded-md mx-6">
+                    </td>
+                    <td>
+                        <img src="./Img/reference/hiragana/zo-h.png" alt="hiragana" class="ease-in-out hover:scale-125 transition duration-300 w-20 border-2 rounded-md mx-6">
+                    </td>
+                </tr>
+                <tr class="mt-2 flex justify-center">
+                    <td>
+                        <img src="./Img/reference/hiragana/da-h.png" alt="hiragana" class="ease-in-out hover:scale-125 transition duration-300 w-20 border-2 rounded-md mx-6">
+                    </td>
+                    <td>
+                        <img src="./Img/reference/hiragana/di-h.png" alt="hiragana" class="ease-in-out hover:scale-125 transition duration-300 w-20 border-2 rounded-md mx-6">
+                    </td>
+                    <td>
+                        <img src="./Img/reference/hiragana/du-h.png" alt="hiragana" class="ease-in-out hover:scale-125 transition duration-300 w-20 border-2 rounded-md mx-6">
+                    </td>
+                    <td>
+                        <img src="./Img/reference/hiragana/de-h.png" alt="hiragana" class="ease-in-out hover:scale-125 transition duration-300 w-20 border-2 rounded-md mx-6">
+                    </td>
+                    <td>
+                        <img src="./Img/reference/hiragana/do-h.png" alt="hiragana" class="ease-in-out hover:scale-125 transition duration-300 w-20 border-2 rounded-md mx-6">
+                    </td>
+                </tr>
+                <tr class="mt-2 flex justify-center">
+                    <td>
+                        <img src="./Img/reference/hiragana/ba-h.png" alt="hiragana" class="ease-in-out hover:scale-125 transition duration-300 w-20 border-2 rounded-md mx-6">
+                    </td>
+                    <td>
+                        <img src="./Img/reference/hiragana/bi-h.png" alt="hiragana" class="ease-in-out hover:scale-125 transition duration-300 w-20 border-2 rounded-md mx-6">
+                    </td>
+                    <td>
+                        <img src="./Img/reference/hiragana/bu-h.png" alt="hiragana" class="ease-in-out hover:scale-125 transition duration-300 w-20 border-2 rounded-md mx-6">
+                    </td>
+                    <td>
+                        <img src="./Img/reference/hiragana/be-h.png" alt="hiragana" class="ease-in-out hover:scale-125 transition duration-300 w-20 border-2 rounded-md mx-6">
+                    </td>
+                    <td>
+                        <img src="./Img/reference/hiragana/bo-h.png" alt="hiragana" class="ease-in-out hover:scale-125 transition duration-300 w-20 border-2 rounded-md mx-6">
+                    </td>
+                </tr>
+                <tr class="mt-2 flex justify-center">
+                    <td>
+                        <img src="./Img/reference/hiragana/pa-h.png" alt="hiragana" class="ease-in-out hover:scale-125 transition duration-300 w-20 border-2 rounded-md mx-6">
+                    </td>
+                    <td>
+                        <img src="./Img/reference/hiragana/pi-h.png" alt="hiragana" class="ease-in-out hover:scale-125 transition duration-300 w-20 border-2 rounded-md mx-6">
+                    </td>
+                    <td>
+                        <img src="./Img/reference/hiragana/pu-h.png" alt="hiragana" class="ease-in-out hover:scale-125 transition duration-300 w-20 border-2 rounded-md mx-6">
+                    </td>
+                    <td>
+                        <img src="./Img/reference/hiragana/pe-h.png" alt="hiragana" class="ease-in-out hover:scale-125 transition duration-300 w-20 border-2 rounded-md mx-6">
+                    </td>
+                    <td>
+                        <img src="./Img/reference/hiragana/po-h.png" alt="hiragana" class="ease-in-out hover:scale-125 transition duration-300 w-20 border-2 rounded-md mx-6">
+                    </td>
+                </tr>
+                <tr class="mt-2 flex justify-center">
+                    <td>
+                        <img src="./Img/reference/hiragana/kya-h.png" alt="hiragana" class="ease-in-out hover:scale-125 transition duration-300 w-20 border-2 rounded-md mx-6">
+                    </td>
+                    <td>
+                        <img src="./Img/reference/hiragana/sha-h.png" alt="hiragana" class="ease-in-out hover:scale-125 transition duration-300 w-20 border-2 rounded-md mx-6">
+                    </td>
+                    <td>
+                        <img src="./Img/reference/hiragana/cha-h.png" alt="hiragana" class="ease-in-out hover:scale-125 transition duration-300 w-20 border-2 rounded-md mx-6">
+                    </td>
+                    <td>
+                        <img src="./Img/reference/hiragana/nya-h.png" alt="hiragana" class="ease-in-out hover:scale-125 transition duration-300 w-20 border-2 rounded-md mx-6">
+                    </td>
+                    <td>
+                        <img src="./Img/reference/hiragana/hya-h.png" alt="hiragana" class="ease-in-out hover:scale-125 transition duration-300 w-20 border-2 rounded-md mx-6">
+                    </td>
+                    <td>
+                        <img src="./Img/reference/hiragana/mya-h.png" alt="hiragana" class="ease-in-out hover:scale-125 transition duration-300 w-20 border-2 rounded-md mx-6">
+                    </td>
+                    <td>
+                        <img src="./Img/reference/hiragana/rya-h.png" alt="hiragana" class="ease-in-out hover:scale-125 transition duration-300 w-20 border-2 rounded-md mx-6">
+                    </td>
+                </tr>
+                <tr class="mt-2 flex justify-center">
+                    <td>
+                        <img src="./Img/reference/hiragana/gya-h.png" alt="hiragana" class="ease-in-out hover:scale-125 transition duration-300 w-20 border-2 rounded-md mx-6">
+                    </td>
+                    <td>
+                        <img src="./Img/reference/hiragana/ja-h.png" alt="hiragana" class="ease-in-out hover:scale-125 transition duration-300 w-20 border-2 rounded-md mx-6">
+                    </td>
+                    <td>
+                        <img src="./Img/reference/hiragana/dya-h.png" alt="hiragana" class="ease-in-out hover:scale-125 transition duration-300 w-20 border-2 rounded-md mx-6">
+                    </td>
+                    <td>
+                        <img src="./Img/reference/hiragana/bya-h.png" alt="hiragana" class="ease-in-out hover:scale-125 transition duration-300 w-20 border-2 rounded-md mx-6">
+                    </td>
+                    <td>
+                        <img src="./Img/reference/hiragana/pya-h.png" alt="hiragana" class="ease-in-out hover:scale-125 transition duration-300 w-20 border-2 rounded-md mx-6">
+                    </td>
+            </table>
+        </div>
+        <div class="my-24 mt-12 border-t-2 border-gray-500 pt-12">
+            <table class="mx-auto">
+                <tr>
+                    <td id="katakana-reference" class="font-bold text-4xl text-center">
+                        Katakana Reference <br> <span class="text-xs hover:text-red-900"><a href="#header">Click here to go back to the Quiz</a></span>
+                    </td>
+                </tr>
+                <tr class="mt-10 flex justify-start">
+                    <td>
+                        <img src="./Img/reference/katakana/a-k.png" alt="katakana" class="ease-in-out hover:scale-125 transition duration-300 w-20 border-2 rounded-md mx-6">
+                    </td>
+                    <td>
+                        <img src="./Img/reference/katakana/i-k.png" alt="katakana" class="ease-in-out hover:scale-125 transition duration-300 w-20 border-2 rounded-md mx-6">
+                    </td>
+                    <td>
+                        <img src="./Img/reference/katakana/u-k.png" alt="katakana" class="ease-in-out hover:scale-125 transition duration-300 w-20 border-2 rounded-md mx-6">
+                    </td>
+                    <td>
+                        <img src="./Img/reference/katakana/e-k.png" alt="katakana" class="ease-in-out hover:scale-125 transition duration-300 w-20 border-2 rounded-md mx-6">
+                    </td>
+                    <td>
+                        <img src="./Img/reference/katakana/o-k.png" alt="katakana" class="ease-in-out hover:scale-125 transition duration-300 w-20 border-2 rounded-md mx-6">
+                    </td>
+                    <td>
+                        <img src="./Img/reference/katakana/vu-k.png" alt="katakana" class="ease-in-out hover:scale-125 transition duration-300 w-20 border-2 rounded-md mx-6">
+                    </td>
+                </tr>
+                <tr class="mt-2 flex justify-center">
+                    <td>
+                        <img src="./Img/reference/katakana/ka-k.png" alt="katakana" class="ease-in-out hover:scale-125 transition duration-300 w-20 border-2 rounded-md mx-6">
+                    </td>
+                    <td>
+                        <img src="./Img/reference/katakana/ki-k.png" alt="katakana" class="ease-in-out hover:scale-125 transition duration-300 w-20 border-2 rounded-md mx-6">
+                    </td>
+                    <td>
+                        <img src="./Img/reference/katakana/ku-k.png" alt="katakana" class="ease-in-out hover:scale-125 transition duration-300 w-20 border-2 rounded-md mx-6">
+                    </td>
+                    <td>
+                        <img src="./Img/reference/katakana/ke-k.png" alt="katakana" class="ease-in-out hover:scale-125 transition duration-300 w-20 border-2 rounded-md mx-6">
+                    </td>
+                    <td>
+                        <img src="./Img/reference/katakana/ko-k.png" alt="katakana" class="ease-in-out hover:scale-125 transition duration-300 w-20 border-2 rounded-md mx-6">
+                    </td>
+                </tr>
+                <tr class="mt-2 flex justify-center">
+                    <td>
+                        <img src="./Img/reference/katakana/sa-k.png" alt="katakana" class="ease-in-out hover:scale-125 transition duration-300 w-20 border-2 rounded-md mx-6">
+                    </td>
+                    <td>
+                        <img src="./Img/reference/katakana/shi-k.png" alt="katakana" class="ease-in-out hover:scale-125 transition duration-300 w-20 border-2 rounded-md mx-6">
+                    </td>
+                    <td>
+                        <img src="./Img/reference/katakana/su-k.png" alt="katakana" class="ease-in-out hover:scale-125 transition duration-300 w-20 border-2 rounded-md mx-6">
+                    </td>
+                    <td>
+                        <img src="./Img/reference/katakana/se-k.png" alt="katakana" class="ease-in-out hover:scale-125 transition duration-300 w-20 border-2 rounded-md mx-6">
+                    </td>
+                    <td>
+                        <img src="./Img/reference/katakana/so-k.png" alt="katakana" class="ease-in-out hover:scale-125 transition duration-300 w-20 border-2 rounded-md mx-6">
+                    </td>
+                </tr>
+                <tr class="mt-2 flex justify-center">
+                    <td>
+                        <img src="./Img/reference/katakana/ta-k.png" alt="katakana" class="ease-in-out hover:scale-125 transition duration-300 w-20 border-2 rounded-md mx-6">
+                    </td>
+                    <td>
+                        <img src="./Img/reference/katakana/chi-k.png" alt="katakana" class="ease-in-out hover:scale-125 transition duration-300 w-20 border-2 rounded-md mx-6">
+                    </td>
+                    <td>
+                        <img src="./Img/reference/katakana/tsu-k.png" alt="katakana" class="ease-in-out hover:scale-125 transition duration-300 w-20 border-2 rounded-md mx-6">
+                    </td>
+                    <td>
+                        <img src="./Img/reference/katakana/te-k.png" alt="katakana" class="ease-in-out hover:scale-125 transition duration-300 w-20 border-2 rounded-md mx-6">
+                    </td>
+                    <td>
+                        <img src="./Img/reference/katakana/to-k.png" alt="katakana" class="ease-in-out hover:scale-125 transition duration-300 w-20 border-2 rounded-md mx-6">
+                    </td>
+                </tr>
+                <tr class="mt-2 flex justify-center">
+                    <td>
+                        <img src="./Img/reference/katakana/na-k.png" alt="katakana" class="ease-in-out hover:scale-125 transition duration-300 w-20 border-2 rounded-md mx-6">
+                    </td>
+                    <td>
+                        <img src="./Img/reference/katakana/ni-k.png" alt="katakana" class="ease-in-out hover:scale-125 transition duration-300 w-20 border-2 rounded-md mx-6">
+                    </td>
+                    <td>
+                        <img src="./Img/reference/katakana/nu-k.png" alt="katakana" class="ease-in-out hover:scale-125 transition duration-300 w-20 border-2 rounded-md mx-6">
+                    </td>
+                    <td>
+                        <img src="./Img/reference/katakana/ne-k.png" alt="katakana" class="ease-in-out hover:scale-125 transition duration-300 w-20 border-2 rounded-md mx-6">
+                    </td>
+                    <td>
+                        <img src="./Img/reference/katakana/no-k.png" alt="katakana" class="ease-in-out hover:scale-125 transition duration-300 w-20 border-2 rounded-md mx-6">
+                    </td>
+                    <td>
+                        <img src="./Img/reference/katakana/n-k.png" alt="katakana" class="ease-in-out hover:scale-125 transition duration-300 w-20 border-2 rounded-md mx-6">
+                    </td>
+                </tr>
+                <tr class="mt-2 flex justify-center">
+                    <td>
+                        <img src="./Img/reference/katakana/ha-k.png" alt="katakana" class="ease-in-out hover:scale-125 transition duration-300 w-20 border-2 rounded-md mx-6">
+                    </td>
+                    <td>
+                        <img src="./Img/reference/katakana/hi-k.png" alt="katakana" class="ease-in-out hover:scale-125 transition duration-300 w-20 border-2 rounded-md mx-6">
+                    </td>
+                    <td>
+                        <img src="./Img/reference/katakana/fu-k.png" alt="katakana" class="ease-in-out hover:scale-125 transition duration-300 w-20 border-2 rounded-md mx-6">
+                    </td>
+                    <td>
+                        <img src="./Img/reference/katakana/he-k.png" alt="katakana" class="ease-in-out hover:scale-125 transition duration-300 w-20 border-2 rounded-md mx-6">
+                    </td>
+                    <td>
+                        <img src="./Img/reference/katakana/ho-k.png" alt="katakana" class="ease-in-out hover:scale-125 transition duration-300 w-20 border-2 rounded-md mx-6">
+                    </td>
+                </tr>
+                <tr class="mt-2 flex justify-center">
+                    <td>
+                        <img src="./Img/reference/katakana/ma-k.png" alt="katakana" class="ease-in-out hover:scale-125 transition duration-300 w-20 border-2 rounded-md mx-6">
+                    </td>
+                    <td>
+                        <img src="./Img/reference/katakana/mi-k.png" alt="katakana" class="ease-in-out hover:scale-125 transition duration-300 w-20 border-2 rounded-md mx-6">
+                    </td>
+                    <td>
+                        <img src="./Img/reference/katakana/mu-k.png" alt="katakana" class="ease-in-out hover:scale-125 transition duration-300 w-20 border-2 rounded-md mx-6">
+                    </td>
+                    <td>
+                        <img src="./Img/reference/katakana/me-k.png" alt="katakana" class="ease-in-out hover:scale-125 transition duration-300 w-20 border-2 rounded-md mx-6">
+                    </td>
+                    <td>
+                        <img src="./Img/reference/katakana/mo-k.png" alt="katakana" class="ease-in-out hover:scale-125 transition duration-300 w-20 border-2 rounded-md mx-6">
+                    </td>
+                </tr>
+                <tr class="mt-2 flex justify-center">
+                    <td>
+                        <img src="./Img/reference/katakana/ya-k.png" alt="katakana" class="ease-in-out hover:scale-125 transition duration-300 w-20 border-2 rounded-md mx-6">
+                    </td>
+                    <td>
+                        <img src="./Img/reference/katakana/yu-k.png" alt="katakana" class="ease-in-out hover:scale-125 transition duration-300 w-20 border-2 rounded-md mx-6">
+                    </td>
+                    <td>
+                        <img src="./Img/reference/katakana/yo-k.png" alt="katakana" class="ease-in-out hover:scale-125 transition duration-300 w-20 border-2 rounded-md mx-6">
+                    </td>
+                </tr>
+                <tr class="mt-2 flex justify-center">
+                    <td>
+                        <img src="./Img/reference/katakana/ra-k.png" alt="katakana" class="ease-in-out hover:scale-125 transition duration-300 w-20 border-2 rounded-md mx-6">
+                    </td>
+                    <td>
+                        <img src="./Img/reference/katakana/ri-k.png" alt="katakana" class="ease-in-out hover:scale-125 transition duration-300 w-20 border-2 rounded-md mx-6">
+                    </td>
+                    <td>
+                        <img src="./Img/reference/katakana/ru-k.png" alt="katakana" class="ease-in-out hover:scale-125 transition duration-300 w-20 border-2 rounded-md mx-6">
+                    </td>
+                    <td>
+                        <img src="./Img/reference/katakana/re-k.png" alt="katakana" class="ease-in-out hover:scale-125 transition duration-300 w-20 border-2 rounded-md mx-6">
+                    </td>
+                    <td>
+                        <img src="./Img/reference/katakana/ro-k.png" alt="katakana" class="ease-in-out hover:scale-125 transition duration-300 w-20 border-2 rounded-md mx-6">
+                    </td>
+                </tr>
+                <tr class="mt-2 flex justify-center">
+                    <td>
+                        <img src="./Img/reference/katakana/wa-k.png" alt="katakana" class="ease-in-out hover:scale-125 transition duration-300 w-20 border-2 rounded-md mx-6">
+                    </td>
+                    <td>
+                        <img src="./Img/reference/katakana/wo-k.png" alt="katakana" class="ease-in-out hover:scale-125 transition duration-300 w-20 border-2 rounded-md mx-6">
+                    </td>
+                </tr>
+                <tr class="mt-2 flex justify-center">
+                    <td>
+                        <img src="./Img/reference/katakana/ga-k.png" alt="katakana" class="ease-in-out hover:scale-125 transition duration-300 w-20 border-2 rounded-md mx-6">
+                    </td>
+                    <td>
+                        <img src="./Img/reference/katakana/gi-k.png" alt="katakana" class="ease-in-out hover:scale-125 transition duration-300 w-20 border-2 rounded-md mx-6">
+                    </td>
+                    <td>
+                        <img src="./Img/reference/katakana/gu-k.png" alt="katakana" class="ease-in-out hover:scale-125 transition duration-300 w-20 border-2 rounded-md mx-6">
+                    </td>
+                    <td>
+                        <img src="./Img/reference/katakana/ge-k.png" alt="katakana" class="ease-in-out hover:scale-125 transition duration-300 w-20 border-2 rounded-md mx-6">
+                    </td>
+                    <td>
+                        <img src="./Img/reference/katakana/go-k.png" alt="katakana" class="ease-in-out hover:scale-125 transition duration-300 w-20 border-2 rounded-md mx-6">
+                    </td>
+                </tr>
+                <tr class="mt-2 flex justify-center">
+                    <td>
+                        <img src="./Img/reference/katakana/za-k.png" alt="katakana" class="ease-in-out hover:scale-125 transition duration-300 w-20 border-2 rounded-md mx-6">
+                    </td>
+                    <td>
+                        <img src="./Img/reference/katakana/ji-k.png" alt="katakana" class="ease-in-out hover:scale-125 transition duration-300 w-20 border-2 rounded-md mx-6">
+                    </td>
+                    <td>
+                        <img src="./Img/reference/katakana/zu-k.png" alt="katakana" class="ease-in-out hover:scale-125 transition duration-300 w-20 border-2 rounded-md mx-6">
+                    </td>
+                    <td>
+                        <img src="./Img/reference/katakana/ze-k.png" alt="katakana" class="ease-in-out hover:scale-125 transition duration-300 w-20 border-2 rounded-md mx-6">
+                    </td>
+                    <td>
+                        <img src="./Img/reference/katakana/zo-k.png" alt="katakana" class="ease-in-out hover:scale-125 transition duration-300 w-20 border-2 rounded-md mx-6">
+                    </td>
+                </tr>
+                <tr class="mt-2 flex justify-center">
+                    <td>
+                        <img src="./Img/reference/katakana/da-k.png" alt="katakana" class="ease-in-out hover:scale-125 transition duration-300 w-20 border-2 rounded-md mx-6">
+                    </td>
+                    <td>
+                        <img src="./Img/reference/katakana/di-k.png" alt="katakana" class="ease-in-out hover:scale-125 transition duration-300 w-20 border-2 rounded-md mx-6">
+                    </td>
+                    <td>
+                        <img src="./Img/reference/katakana/du-k.png" alt="katakana" class="ease-in-out hover:scale-125 transition duration-300 w-20 border-2 rounded-md mx-6">
+                    </td>
+                    <td>
+                        <img src="./Img/reference/katakana/de-k.png" alt="katakana" class="ease-in-out hover:scale-125 transition duration-300 w-20 border-2 rounded-md mx-6">
+                    </td>
+                    <td>
+                        <img src="./Img/reference/katakana/do-k.png" alt="katakana" class="ease-in-out hover:scale-125 transition duration-300 w-20 border-2 rounded-md mx-6">
+                    </td>
+                </tr>
+                <tr class="mt-2 flex justify-center">
+                    <td>
+                        <img src="./Img/reference/katakana/ba-k.png" alt="katakana" class="ease-in-out hover:scale-125 transition duration-300 w-20 border-2 rounded-md mx-6">
+                    </td>
+                    <td>
+                        <img src="./Img/reference/katakana/bi-k.png" alt="katakana" class="ease-in-out hover:scale-125 transition duration-300 w-20 border-2 rounded-md mx-6">
+                    </td>
+                    <td>
+                        <img src="./Img/reference/katakana/bu-k.png" alt="katakana" class="ease-in-out hover:scale-125 transition duration-300 w-20 border-2 rounded-md mx-6">
+                    </td>
+                    <td>
+                        <img src="./Img/reference/katakana/be-k.png" alt="katakana" class="ease-in-out hover:scale-125 transition duration-300 w-20 border-2 rounded-md mx-6">
+                    </td>
+                    <td>
+                        <img src="./Img/reference/katakana/bo-k.png" alt="katakana" class="ease-in-out hover:scale-125 transition duration-300 w-20 border-2 rounded-md mx-6">
+                    </td>
+                </tr>
+                <tr class="mt-2 flex justify-center">
+                    <td>
+                        <img src="./Img/reference/katakana/pa-k.png" alt="katakana" class="ease-in-out hover:scale-125 transition duration-300 w-20 border-2 rounded-md mx-6">
+                    </td>
+                    <td>
+                        <img src="./Img/reference/katakana/pi-k.png" alt="katakana" class="ease-in-out hover:scale-125 transition duration-300 w-20 border-2 rounded-md mx-6">
+                    </td>
+                    <td>
+                        <img src="./Img/reference/katakana/pu-k.png" alt="katakana" class="ease-in-out hover:scale-125 transition duration-300 w-20 border-2 rounded-md mx-6">
+                    </td>
+                    <td>
+                        <img src="./Img/reference/katakana/pe-k.png" alt="katakana" class="ease-in-out hover:scale-125 transition duration-300 w-20 border-2 rounded-md mx-6">
+                    </td>
+                    <td>
+                        <img src="./Img/reference/katakana/po-k.png" alt="katakana" class="ease-in-out hover:scale-125 transition duration-300 w-20 border-2 rounded-md mx-6">
+                    </td>
+                </tr>
+                <tr class="mt-2 flex justify-center">
+                    <td>
+                        <img src="./Img/reference/katakana/kya-k.png" alt="katakana" class="ease-in-out hover:scale-125 transition duration-300 w-20 border-2 rounded-md mx-6">
+                    </td>
+                    <td>
+                        <img src="./Img/reference/katakana/sha-k.png" alt="katakana" class="ease-in-out hover:scale-125 transition duration-300 w-20 border-2 rounded-md mx-6">
+                    </td>
+                    <td>
+                        <img src="./Img/reference/katakana/cha-k.png" alt="katakana" class="ease-in-out hover:scale-125 transition duration-300 w-20 border-2 rounded-md mx-6">
+                    </td>
+                    <td>
+                        <img src="./Img/reference/katakana/nya-k.png" alt="katakana" class="ease-in-out hover:scale-125 transition duration-300 w-20 border-2 rounded-md mx-6">
+                    </td>
+                    <td>
+                        <img src="./Img/reference/katakana/hya-k.png" alt="katakana" class="ease-in-out hover:scale-125 transition duration-300 w-20 border-2 rounded-md mx-6">
+                    </td>
+                    <td>
+                        <img src="./Img/reference/katakana/mya-k.png" alt="katakana" class="ease-in-out hover:scale-125 transition duration-300 w-20 border-2 rounded-md mx-6">
+                    </td>
+                    <td>
+                        <img src="./Img/reference/katakana/rya-k.png" alt="katakana" class="ease-in-out hover:scale-125 transition duration-300 w-20 border-2 rounded-md mx-6">
+                    </td>
+                </tr>
+                <tr class="mt-2 flex justify-center">
+                    <td>
+                        <img src="./Img/reference/katakana/gya-k.png" alt="katakana" class="ease-in-out hover:scale-125 transition duration-300 w-20 border-2 rounded-md mx-6">
+                    </td>
+                    <td>
+                        <img src="./Img/reference/katakana/ja-k.png" alt="katakana" class="ease-in-out hover:scale-125 transition duration-300 w-20 border-2 rounded-md mx-6">
+                    </td>
+                    <td>
+                        <img src="./Img/reference/katakana/dya-k.png" alt="katakana" class="ease-in-out hover:scale-125 transition duration-300 w-20 border-2 rounded-md mx-6">
+                    </td>
+                    <td>
+                        <img src="./Img/reference/katakana/bya-k.png" alt="katakana" class="ease-in-out hover:scale-125 transition duration-300 w-20 border-2 rounded-md mx-6">
+                    </td>
+                    <td>
+                        <img src="./Img/reference/katakana/pya-k.png" alt="katakana" class="ease-in-out hover:scale-125 transition duration-300 w-20 border-2 rounded-md mx-6">
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </section>
+    <footer class="bg-gray-300 mt-12 py-6">
+        <div class="container mx-auto flex justify-evenly">
+            <div class="flex justify-center">
+                <a href="https://www.instagram.com/stefanus_samuel/"><img src="./Img/instagram.png" alt="instagram" class="w-10 mx-4"></a>
+                <a href="mailto:sinulinggasamuel1153@gmail.com"><img src="./Img/gmail.png" alt="instagram" class="w-10 mx-4"></a>
+                <a href="https://www.linkedin.com/in/samuel-sinulingga/"><img src="./Img/linkedin.png" alt="instagram" class="w-10 mx-4"></a>
+            </div>
+            <p class="text-center font-bold mt-2">
+                Made By Samuel Sinulingga 
+            </p>
+        </div>
+    </footer>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="index.js"></script>
+</body>
+
+</html>
