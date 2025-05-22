@@ -40,19 +40,30 @@ $("#next").click(function(){
 
     let choices = [correctAnswer];
 
-    while (choices.length < 4) {
+    let attempts = 0;
+    while (choices.length < 4 && attempts < 100) {
         let randItem = listQuiz[Math.floor(Math.random() * listQuiz.length)];
         let option = randItem.slice(0, -2);
         if (!usedAnswers.has(option)) {
             usedAnswers.add(option);
             choices.push(option);
         }
+        attempts++;
+    }
+
+    while (choices.length < 4) {
+        choices.push("");
     }
 
     choices = choices.sort(() => Math.random() - 0.5);
 
     for (let i = 0; i < 4; i++) {
         $("#choice" + (i + 1)).text(choices[i]);
+        if ($("#choice" + (i + 1)).text() === "") {
+            $("#choice" + (i + 1)).addClass("hidden");
+        } else {
+            $("#choice" + (i + 1)).removeClass("hidden");
+        }
     }
 
     // After Answer
@@ -138,7 +149,7 @@ const hiragana = {
 const katakana = {
     2: ["ga-k", "gi-k", "gu-k", "ge-k", "go-k", "za-k", "ji-k", "zu-k", "ze-k", "zo-k", "da-k", "di-k", "du-k", "de-k", "do-k", "ba-k", "bi-k", "bu-k", "be-k", "bo-k", "pa-k", "pi-k", "pu-k", "pe-k", "po-k"],
     3: ["kya-k", "kyu-k", "kyo-k", "sha-k", "shu-k", "sho-k", "cha-k", "chu-k", "cho-k", "nya-k", "nyu-k", "nyo-k", "hya-k", "hyu-k", "hyo-k", "mya-k", "myu-k", "myo-k", "rya-k", "ryu-k", "ryo-k", "gya-k", "gyu-k", "gyo-k", "ja-k", "ju-k", "jo-k", "dya-k", "dyu-k", "dyo-k", "bya-k", "byu-k", "byo-k", "pya-k", "pyu-k", "pyo-k"],
-    4: ["a-k", "i-k", "u-k", "e-k", "o-k"],
+    4: ["a-k", "i-k", "u-k", "e-k", "o-k", "vu-k"],
     5: ["ka-k", "ki-k", "ku-k", "ke-k", "ko-k"],
     6: ["sa-k", "shi-k", "su-k", "se-k", "so-k"],
     7: ["ta-k", "chi-k", "tsu-k", "te-k", "to-k"],
