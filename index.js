@@ -206,6 +206,10 @@ $('#katakana').click(function() {
     }
 });
 
+// Starting Counter
+let correctCounter = 0;
+let wrongCounter = 0;
+
 // Checking Answer with Textbox
 $("#validate").click(function() {
     if (randomNumber === null || listQuiz.length === 0) {
@@ -214,7 +218,10 @@ $("#validate").click(function() {
     }
     let answer = $("#answer").val().toLowerCase();
     let correctAnswer = listQuiz[randomNumber].slice(0, -2);
+
     if (answer === correctAnswer) {
+        correctCounter++;
+        $("#counterText").text(correctCounter).fadeOut(700).fadeIn(700);
         $("#text").text("Correct! Well done!");
         $("#answer").addClass("border-2 border-green-500 ");
         $("#validate").prop("disabled", true);
@@ -226,6 +233,8 @@ $("#validate").click(function() {
     } else if (answer === "") {
         $("#text").text("Please enter an answer!").fadeOut(100).fadeIn(100);
     } else {
+        wrongCounter++;
+        $("#counterText2").text(wrongCounter).fadeOut(700).fadeIn(700);
         $("#text").html("Incorrect! The correct answer is: <span class=\"text-red-800 font-bold\">" + correctAnswer + "</span>");
         $("#answer").addClass("border-2 border-red-500");
         $("#validate").prop("disabled", true);
@@ -256,6 +265,8 @@ $("#choice1, #choice2, #choice3, #choice4").click(function() {
     $(this).addClass("bg-gray-200").removeClass("border-black ease-in-out hover:scale-105 transition duration-300 hover:bg-gray-100");
 
     if (selectedAnswer === correctAnswer) {
+        correctCounter++;
+        $("#counterText").text(correctCounter).fadeOut(700).fadeIn(700);
         $("#allowMultipleChoice").prop("disabled", true);
         $("#allowMultipleChoice").removeClass("ease-in-out hover:scale-105 transition duration-300 hover:bg-gray-100 bg-white").addClass("bg-gray-200");
         $("#text").html("Correct! Well done!");
@@ -264,6 +275,8 @@ $("#choice1, #choice2, #choice3, #choice4").click(function() {
         $("#next").prop("disabled", false);
         $("#next").addClass("ease-in-out hover:scale-105 transition duration-300 hover:bg-gray-100 bg-white").removeClass("bg-gray-200");
     } else {
+        wrongCounter++;
+        $("#counterText2").text(wrongCounter).fadeOut(700).fadeIn(700);
         $("#allowMultipleChoice").prop("disabled", true);
         $("#allowMultipleChoice").removeClass("ease-in-out hover:scale-105 transition duration-300 hover:bg-gray-100 bg-white").addClass("bg-gray-200");
         $("#text").html("Incorrect! The correct answer is: <span class=\"text-red-800 font-bold\">" + correctAnswer + "</span>");
