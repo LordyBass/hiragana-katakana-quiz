@@ -41,8 +41,7 @@ $("#next").click(function(){
 
     // Generate Question
     randomNumber = Math.floor(Math.random() * listQuiz.length);
-    $("#img").attr("src", "./Img/blank.jpg").css({ opacity: 0 }).animate({ opacity: 1 }, 1000);
-    $("#img").attr("src", "./Img/quizImg/" + listQuiz[randomNumber] + ".jpg").css({ opacity: 0 }).animate({ opacity: 1 }, 2000);
+    $("#img").attr("src", "./Img/quizImg/" + listQuiz[randomNumber] + ".jpg").css({ opacity: 0 }).animate({ opacity: 1 }, 800);
 
     // Generate Multiple Choice
     let correctAnswer = listQuiz[randomNumber].slice(0, -2);
@@ -254,6 +253,7 @@ $("#allowMultipleChoice").click(function() {
 $("#choice1, #choice2, #choice3, #choice4").click(function() {
     let selectedAnswer = $(this).text();
     let correctAnswer = listQuiz[randomNumber].slice(0, -2);
+    $(this).addClass("bg-gray-200").removeClass("border-black ease-in-out hover:scale-105 transition duration-300 hover:bg-gray-100");
 
     if (selectedAnswer === correctAnswer) {
         $("#allowMultipleChoice").prop("disabled", true);
@@ -275,7 +275,7 @@ $("#choice1, #choice2, #choice3, #choice4").click(function() {
 
     for (let i = 1; i < 5; i++) {
         $("#choice" + i).prop("disabled", true);
-        $("#choice" + i).removeClass("border-black ease-in-out hover:scale-105 transition duration-300 hover:bg-gray-100").addClass("bg-gray-200");
+        $("#choice" + i).removeClass("border-black ease-in-out hover:scale-105 transition duration-300 hover:bg-gray-100");
         if ($("#choice" + i).text() === correctAnswer) {
             $("#choice" + i).addClass("border-green-500");
         } else {
