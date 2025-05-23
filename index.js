@@ -14,6 +14,7 @@ $('#hiragana').click(function() {
 let randomNumber = null;
 
 $("#next").click(function(){
+    // Error Handling
     let errorNotice = $("#hiragana").prop("checked");
     let errorNotice2 = $("#katakana").prop("checked");
 
@@ -24,6 +25,17 @@ $("#next").click(function(){
         return;
     }
 
+    // Disable Checkboxes
+    $("#katakana").prop("disabled", true);
+    for (let i = 2; i <= 13; i++) {
+        $('#katakana' + i).prop('disabled', true);
+    }
+    $("#hiragana").prop("disabled", true);
+    for (let i = 2; i <= 13; i++) {
+        $('#hiragana' + i).prop('disabled', true);
+    }
+
+    // Disable Next Button
     $("#next").prop("disabled", true);
     $("#next").removeClass("ease-in-out hover:scale-105 transition duration-300 hover:bg-gray-100 bg-white").addClass("bg-gray-200");
 
@@ -73,11 +85,11 @@ $("#next").click(function(){
         $("#choice" + i).prop("disabled", false);
         $("#choice" + i).addClass("border-black ease-in-out hover:scale-105 transition duration-300 hover:bg-gray-100").removeClass("bg-gray-200");
     }
+    $("#text").text("Keep Learning!!! You Can Do It 🔥🔥");
     $("#allowMultipleChoice").prop("disabled", false);
     $("#allowMultipleChoice").addClass("ease-in-out hover:scale-105 transition duration-300 hover:bg-gray-100 bg-white").removeClass("bg-gray-200");
     $("#next").text("Next");
     $("#answer").val("");
-    $("#text").text("Keep Learning!!! You Can Do It 🔥🔥");
     $("#answer").removeClass("border-green-500 border-red-500");
     $("#validate").prop("disabled", false);
     $("#validate").addClass("ease-in-out hover:scale-105 transition duration-300 hover:bg-gray-100 bg-white").removeClass("bg-gray-200");
@@ -246,7 +258,7 @@ $("#choice1, #choice2, #choice3, #choice4").click(function() {
     if (selectedAnswer === correctAnswer) {
         $("#allowMultipleChoice").prop("disabled", true);
         $("#allowMultipleChoice").removeClass("ease-in-out hover:scale-105 transition duration-300 hover:bg-gray-100 bg-white").addClass("bg-gray-200");
-        $("#text").text("Correct! Well done!");
+        $("#text").html("Correct! Well done!");
         $("#validate").prop("disabled", true);
         $("#validate").removeClass("ease-in-out hover:scale-105 transition duration-300 hover:bg-gray-100 bg-white").addClass("bg-gray-200");
         $("#next").prop("disabled", false);
@@ -269,5 +281,15 @@ $("#choice1, #choice2, #choice3, #choice4").click(function() {
         } else {
             $("#choice" + i).addClass("border-red-500");
         }
+    }
+
+    // Enable Checkboxes
+    $("#katakana").prop("disabled", false);
+    for (let i = 2; i <= 13; i++) {
+        $('#katakana' + i).prop('disabled', false);
+    }
+    $("#hiragana").prop("disabled", false);
+    for (let i = 2; i <= 13; i++) {
+        $('#hiragana' + i).prop('disabled', false);
     }
 });
