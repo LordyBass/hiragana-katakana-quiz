@@ -753,8 +753,9 @@ body {
   .hiddenItem {
     display: none;
   }
-  .smallContent{
-    width: 100%;
+  .marginMultipleChoice{
+    margin-left: 0.2rem;
+    margin-right: 0.2rem;
   }
   .textHeader {
     font-size: 1.5rem;
