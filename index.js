@@ -1,12 +1,14 @@
 // Dropdown Function
 $("#hiraganaDropdownBtn").click(function(){
     $("#hiraganaDropdownContent").toggle('hidden');
-    $("#arrowHiragana").toggleClass("rotate-180")
+    $("#arrowHiragana").toggleClass("rotate-180");
+    $("#underline1").toggleClass("border-b-2");
 })
 
 $("#katakanaDropdownBtn").click(function(){
     $("#katakanaDropdownContent").toggle('hidden');
-    $("#arrowKatakana").toggleClass("rotate-180")
+    $("#arrowKatakana").toggleClass("rotate-180");
+    $("#underline2").toggleClass("border-b-2");
 })
 
 // Checkbox Click Function
