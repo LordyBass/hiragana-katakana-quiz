@@ -1,6 +1,23 @@
+// Dropdown Function
+$("#hiraganaDropdownBtn").click(function(){
+    $("#hiraganaDropdownContent").toggle('hidden');
+    $("#arrowHiragana").toggleClass("rotate-180")
+})
+
+$("#katakanaDropdownBtn").click(function(){
+    $("#katakanaDropdownContent").toggle('hidden');
+    $("#arrowKatakana").toggleClass("rotate-180")
+})
+
 // Checkbox Click Function
 $('#katakana').click(function() {
     for (let i = 2; i <= 13; i++) {
+        $('#katakana' + i).prop('checked', $(this).prop('checked'));
+    }
+});
+
+$('#katakanaA').click(function() {
+    for (let i = 14; i <= 25; i++) {
         $('#katakana' + i).prop('checked', $(this).prop('checked'));
     }
 });
@@ -11,15 +28,34 @@ $('#hiragana').click(function() {
     }
 });
 
+$('#hiraganaA').click(function() {
+    for (let i = 14; i <= 25; i++) {
+        $('#hiragana' + i).prop('checked', $(this).prop('checked'));
+    }
+});
+
+
 let randomNumber = null;
 
 $("#next").click(function(){
     // Error Handling
     let errorNotice = $("#hiragana").prop("checked");
     let errorNotice2 = $("#katakana").prop("checked");
+    let errorNotice3 = $("#hiraganaA").prop("checked");
+    let errorNotice4 = $("#katakanaA").prop("checked");
 
     if (errorNotice === false && errorNotice2 === false) {
-        alert("Must Choose Either Hiragana or Katakana");
+        alert("Must Choose Either Hiragana or Katakana!!\nOn Smartphone you can scroll down and open the Filters");
+        $("#img").attr("src", "./Img/blank.jpg");
+        $("#next").text("Start");
+        return;
+    } else if (
+        (errorNotice && errorNotice3 === true) ||
+        (errorNotice2 && errorNotice3 === true) ||
+        (errorNotice && errorNotice4 === true) ||
+        (errorNotice2 && errorNotice4 === true)
+    ) {
+        alert("Please Only Check Either With Dropdown Button Filter in Small View Or With Filter in Large View");
         $("#img").attr("src", "./Img/blank.jpg");
         $("#next").text("Start");
         return;
@@ -27,11 +63,13 @@ $("#next").click(function(){
 
     // Disable Checkboxes
     $("#katakana").prop("disabled", true);
-    for (let i = 2; i <= 13; i++) {
+    $("#katakanaA").prop("disabled", true);
+    for (let i = 2; i <= 25; i++) {
         $('#katakana' + i).prop('disabled', true);
     }
     $("#hiragana").prop("disabled", true);
-    for (let i = 2; i <= 13; i++) {
+    $("#hiraganaA").prop("disabled", true);
+    for (let i = 2; i <= 25; i++) {
         $('#hiragana' + i).prop('disabled', true);
     }
 
@@ -103,11 +141,11 @@ $(".checkbox").click(function () {
     }
 });
 
-for (let i = 2; i <= 13; i++) {
+for (let i = 2; i <= 25; i++) {
         $('#katakana' + i).change(function(){
             $("#katakana").prop('checked', true);
             let checkedKatakanaCount = 0;
-            for (let j = 2; j <= 13; j++) {
+            for (let j = 2; j <= 25; j++) {
                 if ($('#katakana' + j).prop('checked')) {
                     checkedKatakanaCount++;
                 }
@@ -121,11 +159,11 @@ for (let i = 2; i <= 13; i++) {
 
     };
 
-for (let i = 2; i <= 13; i++) {
+for (let i = 2; i <= 25; i++) {
         $('#hiragana' + i).change(function(){
             $("#hiragana").prop('checked', true);
             let checkedHiraganaCount = 0;
-            for (let j = 2; j <= 13; j++) {
+            for (let j = 2; j <= 25; j++) {
                 if ($('#hiragana' + j).prop('checked')) {
                     checkedHiraganaCount++;
                 }
@@ -154,7 +192,19 @@ const hiragana = {
     10: ["ma-h", "mi-h", "mu-h", "me-h", "mo-h"],
     11: ["ya-h", "yu-h", "yo-h"],
     12: ["ra-h", "ri-h", "ru-h", "re-h", "ro-h"],
-    13: ["wa-h", "wo-h"]
+    13: ["wa-h", "wo-h"],
+    14: ["ga-h", "gi-h", "gu-h", "ge-h", "go-h", "za-h", "ji-h", "zu-h", "ze-h", "zo-h", "da-h", "di-h", "du-h", "de-h", "do-h", "ba-h", "bi-h", "bu-h", "be-h", "bo-h", "pa-h", "pi-h", "pu-h", "pe-h", "po-h"],
+    15: ["kya-h", "kyu-h", "kyo-h", "sha-h", "shu-h", "sho-h", "cha-h", "chu-h", "cho-h", "nya-h", "nyu-h", "nyo-h", "hya-h", "hyu-h", "hyo-h", "mya-h", "myu-h", "myo-h", "rya-h", "ryu-h", "ryo-h", "gya-h", "gyu-h", "gyo-h", "ja-h", "ju-h", "jo-h", "dya-h", "dyu-h", "dyo-h", "bya-h", "byu-h", "byo-h", "pya-h", "pyu-h", "pyo-h"],
+    16: ["a-h", "i-h", "u-h", "e-h", "o-h"],
+    17: ["ka-h", "ki-h", "ku-h", "ke-h", "ko-h"],
+    18: ["sa-h", "shi-h", "su-h", "se-h", "so-h"],
+    19: ["ta-h", "chi-h", "tsu-h", "te-h", "to-h"],
+    20: ["na-h", "ni-h", "nu-h", "ne-h", "no-h", "n-h"],
+    21: ["ha-h", "hi-h", "fu-h", "he-h", "ho-h"],
+    22: ["ma-h", "mi-h", "mu-h", "me-h", "mo-h"],
+    23: ["ya-h", "yu-h", "yo-h"],
+    24: ["ra-h", "ri-h", "ru-h", "re-h", "ro-h"],
+    25: ["wa-h", "wo-h"]
 };
 
 const katakana = {
@@ -169,10 +219,22 @@ const katakana = {
     10: ["ma-k", "mi-k", "mu-k", "me-k", "mo-k"],
     11: ["ya-k", "yu-k", "yo-k"],
     12: ["ra-k", "ri-k", "ru-k", "re-k", "ro-k"],
-    13: ["wa-k", "wo-k"]
+    13: ["wa-k", "wo-k"],
+    14: ["ga-k", "gi-k", "gu-k", "ge-k", "go-k", "za-k", "ji-k", "zu-k", "ze-k", "zo-k", "da-k", "di-k", "du-k", "de-k", "do-k", "ba-k", "bi-k", "bu-k", "be-k", "bo-k", "pa-k", "pi-k", "pu-k", "pe-k", "po-k"],
+    15: ["kya-k", "kyu-k", "kyo-k", "sha-k", "shu-k", "sho-k", "cha-k", "chu-k", "cho-k", "nya-k", "nyu-k", "nyo-k", "hya-k", "hyu-k", "hyo-k", "mya-k", "myu-k", "myo-k", "rya-k", "ryu-k", "ryo-k", "gya-k", "gyu-k", "gyo-k", "ja-k", "ju-k", "jo-k", "dya-k", "dyu-k", "dyo-k", "bya-k", "byu-k", "byo-k", "pya-k", "pyu-k", "pyo-k"],
+    16: ["a-k", "i-k", "u-k", "e-k", "o-k", "vu-k"],
+    17: ["ka-k", "ki-k", "ku-k", "ke-k", "ko-k"],
+    18: ["sa-k", "shi-k", "su-k", "se-k", "so-k"],
+    19: ["ta-k", "chi-k", "tsu-k", "te-k", "to-k"],
+    20: ["na-k", "ni-k", "nu-k", "ne-k", "no-k", "n-k"],
+    21: ["ha-k", "hi-k", "fu-k", "he-k", "ho-k"],
+    22: ["ma-k", "mi-k", "mu-k", "me-k", "mo-k"],
+    23: ["ya-k", "yu-k", "yo-k"],
+    24: ["ra-k", "ri-k", "ru-k", "re-k", "ro-k"],
+    25: ["wa-k", "wo-k"]
 };
 
-for (let i = 2; i <= 13; i++) {
+for (let i = 2; i <= 25; i++) {
     $('#hiragana' + i).change(function() {
         if ($('#hiragana' + i).prop('checked')) {
             listQuiz = listQuiz.concat(hiragana[i]);
