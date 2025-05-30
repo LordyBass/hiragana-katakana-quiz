@@ -36,7 +36,6 @@ $('#hiraganaA').click(function() {
     }
 });
 
-
 let randomNumber = null;
 
 $("#next").click(function(){
@@ -46,7 +45,7 @@ $("#next").click(function(){
     let errorNotice3 = $("#hiraganaA").prop("checked");
     let errorNotice4 = $("#katakanaA").prop("checked");
 
-    if (errorNotice === false && errorNotice2 === false) {
+    if (!(errorNotice || errorNotice2 || errorNotice3 || errorNotice4)) {
         alert("Must Choose Either Hiragana or Katakana!!\nOn Smartphone you can scroll down and open the Filters");
         $("#img").attr("src", "./Img/blank.jpg");
         $("#next").text("Start");
@@ -66,13 +65,11 @@ $("#next").click(function(){
     // Disable Checkboxes
     $("#katakana").prop("disabled", true);
     $("#katakanaA").prop("disabled", true);
-    for (let i = 2; i <= 25; i++) {
-        $('#katakana' + i).prop('disabled', true);
-    }
     $("#hiragana").prop("disabled", true);
     $("#hiraganaA").prop("disabled", true);
     for (let i = 2; i <= 25; i++) {
         $('#hiragana' + i).prop('disabled', true);
+        $('#katakana' + i).prop('disabled', true);
     }
 
     // Disable Next Button
@@ -254,16 +251,55 @@ for (let i = 2; i <= 25; i++) {
 }
 
 $('#hiragana').click(function() {
-    let allHiragana = Object.values(hiragana).flat();
+    let allHiragana = [];
+    for (let i = 2; i <= 13; i++) {
+        if (hiragana[i]) {
+            allHiragana = allHiragana.concat(hiragana[i]);
+        }
+    }
     if ($('#hiragana').prop('checked')) {
         listQuiz = listQuiz.concat(allHiragana);
     } else {
         listQuiz = listQuiz.filter(item => !allHiragana.includes(item));
     }
 });
+
 $('#katakana').click(function() {
-    let allKatakana = Object.values(katakana).flat();
+    let allKatakana = [];
+    for (let i = 2; i <= 13; i++) {
+        if (katakana[i]) {
+            allKatakana = allKatakana.concat(katakana[i]);
+        }
+    }
     if ($('#katakana').prop('checked')) {
+        listQuiz = listQuiz.concat(allKatakana);
+    } else {
+        listQuiz = listQuiz.filter(item => !allKatakana.includes(item));
+    }
+});
+
+$('#hiraganaA').click(function() {
+    let allHiragana = [];
+    for (let i = 14; i <= 25; i++) {
+        if (hiragana[i]) {
+            allHiragana = allHiragana.concat(hiragana[i]);
+        }
+    }
+    if ($('#hiraganaA').prop('checked')) {
+        listQuiz = listQuiz.concat(allHiragana);
+    } else {
+        listQuiz = listQuiz.filter(item => !allHiragana.includes(item));
+    }
+});
+
+$('#katakanaA').click(function() {
+    let allKatakana = [];
+    for (let i = 14; i <= 25; i++) {
+        if (katakana[i]) {
+            allKatakana = allKatakana.concat(katakana[i]);
+        }
+    }
+    if ($('#katakanaA').prop('checked')) {
         listQuiz = listQuiz.concat(allKatakana);
     } else {
         listQuiz = listQuiz.filter(item => !allKatakana.includes(item));
