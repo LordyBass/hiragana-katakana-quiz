@@ -753,6 +753,9 @@ body {
   .hiddenItem {
     display: none;
   }
+  .smallContent{
+    width: 100%;
+  }
   .textHeader {
     font-size: 1.5rem;
   }
@@ -760,9 +763,11 @@ body {
     font-size: 1rem;
   }
   .smallSize {
-    width: 4rem;
+    width: 3rem;
+    margin-left: 1.5rem;
+    margin-right: 1.5rem;
   }
-  @media (max-width: 639px) {
+  @media (max-width: 526px) {
     .smallSize{
       width: 2.5rem;
       margin-left: 1rem;
