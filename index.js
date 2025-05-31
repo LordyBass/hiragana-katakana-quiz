@@ -398,11 +398,11 @@ $("#choice1, #choice2, #choice3, #choice4").click(function() {
 
     // Enable Checkboxes
     $("#katakana").prop("disabled", false);
-    for (let i = 2; i <= 13; i++) {
-        $('#katakana' + i).prop('disabled', false);
-    }
     $("#hiragana").prop("disabled", false);
-    for (let i = 2; i <= 13; i++) {
+    $("#katakanaA").prop("disabled", false);
+    $("#hiraganaA").prop("disabled", false);
+    for (let i = 2; i <= 25; i++) {
+        $('#katakana' + i).prop('disabled', false);
         $('#hiragana' + i).prop('disabled', false);
     }
 });
