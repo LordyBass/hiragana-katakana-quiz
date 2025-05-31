@@ -1,3 +1,5 @@
+let listQuiz = [];
+
 // Dropdown Function
 $("#hiraganaDropdownBtn").click(function(){
     $("#hiraganaDropdownContent").toggle('hidden');
@@ -47,8 +49,6 @@ $("#next").click(function(){
 
     if (!(errorNotice || errorNotice2 || errorNotice3 || errorNotice4)) {
         alert("Must Choose Either Hiragana or Katakana!!\nOn Smartphone you can scroll down and open the Filters");
-        $("#img").attr("src", "./Img/blank.jpg");
-        $("#next").text("Start");
         return;
     } else if (
         (errorNotice && errorNotice3 === true) ||
@@ -57,8 +57,9 @@ $("#next").click(function(){
         (errorNotice2 && errorNotice4 === true)
     ) {
         alert("Please Only Check Either With Dropdown Button Filter in Small View Or With Filter in Large View");
-        $("#img").attr("src", "./Img/blank.jpg");
-        $("#next").text("Start");
+        return;
+    } else if (listQuiz.length === 0) {
+        alert("Please Try to Reselect Filters and Try Again");
         return;
     }
 
@@ -177,7 +178,6 @@ for (let i = 2; i <= 25; i++) {
     };
 
 // Filtering Words Using Checkbox
-let listQuiz = [];
 
 const hiragana = {
     2: ["ga-h", "gi-h", "gu-h", "ge-h", "go-h", "za-h", "ji-h", "zu-h", "ze-h", "zo-h", "da-h", "di-h", "du-h", "de-h", "do-h", "ba-h", "bi-h", "bu-h", "be-h", "bo-h", "pa-h", "pi-h", "pu-h", "pe-h", "po-h"],
