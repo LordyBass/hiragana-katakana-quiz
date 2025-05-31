@@ -362,7 +362,7 @@ $("#allowMultipleChoice").click(function() {
 $("#choice1, #choice2, #choice3, #choice4").click(function() {
     let selectedAnswer = $(this).text();
     let correctAnswer = listQuiz[randomNumber].slice(0, -2);
-    $(this).addClass("bg-gray-200").removeClass("border-black ease-in-out hover:scale-105 transition duration-300 hover:bg-gray-100");
+    $(this).addClass("bg-gray-200").removeClass("bg-white border-black ease-in-out hover:scale-105 transition duration-300 hover:bg-gray-100");
 
     if (selectedAnswer === correctAnswer) {
         correctCounter++;
