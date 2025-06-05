@@ -344,6 +344,15 @@ $("#validate").click(function() {
         $("#allowMultipleChoice").prop("disabled", true);
         $("#allowMultipleChoice").removeClass("ease-in-out hover:scale-105 transition duration-300 hover:bg-gray-100 bg-white").addClass("bg-gray-200");
     }
+    // Enable Checkboxes
+    $("#katakana").prop("disabled", false);
+    $("#hiragana").prop("disabled", false);
+    $("#katakanaA").prop("disabled", false);
+    $("#hiraganaA").prop("disabled", false);
+    for (let i = 2; i <= 25; i++) {
+        $('#katakana' + i).prop('disabled', false);
+        $('#hiragana' + i).prop('disabled', false);
+    }
 });
 
 // Toggling Multiple Choice and Textbox
