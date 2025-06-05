@@ -141,7 +141,7 @@ $(".checkbox").click(function () {
     }
 });
 
-for (let i = 2; i <= 25; i++) {
+for (let i = 2; i <= 13; i++) {
         $('#katakana' + i).change(function(){
             $("#katakana").prop('checked', true);
             let checkedKatakanaCount = 0;
@@ -159,7 +159,25 @@ for (let i = 2; i <= 25; i++) {
 
     };
 
-for (let i = 2; i <= 25; i++) {
+for (let i = 14; i <= 25; i++) {
+        $('#katakana' + i).change(function(){
+            $("#katakanaA").prop('checked', true);
+            let checkedKatakanaCount = 0;
+            for (let j = 2; j <= 25; j++) {
+                if ($('#katakana' + j).prop('checked')) {
+                    checkedKatakanaCount++;
+                }
+            }
+            if (checkedKatakanaCount > 0) {
+                $("#katakanaA").prop('checked', true);
+            } else {
+                $("#katakanaA").prop('checked', false);
+        }
+        })
+
+    };
+
+for (let i = 2; i <= 13; i++) {
         $('#hiragana' + i).change(function(){
             $("#hiragana").prop('checked', true);
             let checkedHiraganaCount = 0;
@@ -172,6 +190,24 @@ for (let i = 2; i <= 25; i++) {
                 $("#hiragana").prop('checked', true);
             } else {
                 $("#hiragana").prop('checked', false);
+        }
+        })
+
+    };
+
+for (let i = 14; i <= 25; i++) {
+        $('#hiragana' + i).change(function(){
+            $("#hiraganaA").prop('checked', true);
+            let checkedHiraganaCount = 0;
+            for (let j = 2; j <= 25; j++) {
+                if ($('#hiragana' + j).prop('checked')) {
+                    checkedHiraganaCount++;
+                }
+            }
+            if (checkedHiraganaCount > 0) {
+                $("#hiraganaA").prop('checked', true);
+            } else {
+                $("#hiraganaA").prop('checked', false);
         }
         })
 
