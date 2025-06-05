@@ -754,8 +754,8 @@ body {
     display: none;
   }
   .marginMultipleChoice{
-    margin-left: 0.2rem;
-    margin-right: 0.2rem;
+    margin: 0.3rem;
+    width: 45%;
   }
   .textHeader {
     font-size: 1.5rem;
